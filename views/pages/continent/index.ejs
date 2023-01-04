@@ -1,0 +1,43 @@
+<%- include('../../layouts/header') %>
+    <div class="container-fluid px-5">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <p class="h1 text-center text-uppercase text-secondary font-weight-bold">list continents</p>
+            <a href="/continent/create" class="btn btn-lg btn-outline-success text-uppercase rounded-0">add a new continent</a>
+        </div>
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Serial</th>
+                    <th scope="col" class="text-center">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% continents.forEach((item,index)=> { %>
+                    <tr>
+                        <th scope="row" class="pl-4" style="width: 5%;">
+                            <%= index+1 %>
+                                </td>
+                        <td class="text-center">
+                            <%= item.id %>
+                        </td>
+                        <td>
+                            <%= item.name %>
+                        </td>
+                        <td>
+                            <span class="rounded-0 badge badge-<%= item.status ? 'success' : 'danger' %>">
+                                <%= item.status ? 'Display' : 'Hidden' %>
+                            </span>
+                        </td>
+                        <td class="text-right w-25">
+                            <a href="/continent/edit/<%= item.id %> " class="btn btn-outline-info rounded-0 text-uppercase">update</a>
+                            <a href="/continent/delete/<%= item.id %> " class="btn btn-outline-danger rounded-0 text-uppercase">delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../../layouts/footer') %>
