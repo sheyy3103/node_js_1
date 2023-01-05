@@ -1,0 +1,47 @@
+<%- include('../../layouts/header') %>
+    <div class="container">
+        <p class="h1 text-success text-uppercase text-center py-3 font-weight-bold">add a new player</p>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="">Player's name: </label>
+                        <input type="text" name="name" class="form-control rounded-0" placeholder="name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Transfer price: </label>
+                        <input type="text" name="price" class="form-control rounded-0" placeholder="price...">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Avatar: </label>
+                        <input type="file" name="avatar" class="form-control rounded-0 pl-0 border-0">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="h5">Status:</label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="status" value="0">
+                                Free agent
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="status" value="1" checked>
+                                In contract
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="">Continent: </label>
+                        <select class="form-control custom-select rounded-0" name="continent_id">
+                            <% continents.forEach((item) => { %>
+                             <option value="<%= item.id %> " ><%= item.name %> </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-outline-success text-uppercase rounded-0">add instantly</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../../layouts/footer') %>
