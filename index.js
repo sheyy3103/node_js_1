@@ -96,6 +96,16 @@ app.get('/continent/delete/:id', (req, res) => {
         }
     })
 });
+app.get('/player', (req, res) => {
+    let sql = "SELECT p.*, c.name as continent FROM players p JOIN continents c ON p.continent_id = c.id";
+    conn.query(sql,(err,result)=>{
+        if (err) {
+            res.send(err);
+        }else{
+            res.render('pages/player/index', {players: result});
+        }
+    })
+});
 
 
 app.listen(port, () => {

@@ -1,0 +1,56 @@
+<%- include('../../layouts/header') %>
+    <div class="container-fluid px-5">
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <p class="h1 text-center text-uppercase text-secondary font-weight-bold">list players</p>
+            <a href="#" class="btn btn-lg btn-outline-success text-uppercase rounded-0">add a new player</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Serial</th>
+                    <th scope="col" class="text-center">ID</th>
+                    <th scope="col">Player's name</th>
+                    <th scope="col">Transfer price</th>
+                    <th scope="col">Avatar</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Continent</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% players.forEach((item,index)=> { %>
+                    <tr>
+                        <th scope="row" class="pl-4" style="width: 5%;">
+                            <%= index + 1 %>
+                        </th>
+                        <td class="text-center">
+                            <%= item.id %>
+                        </td>
+                        <td>
+                            <%= item.name %>
+                        </td>
+                        <td>
+                            <span class="text-danger">
+                                $
+                                <%= item.price %>
+                            </span>
+                        </td>
+                        <td>
+                            <img src="uploads/<%= item.avatar %> " alt="..." height="100px" width="auto">
+                        </td>
+                        <td>
+                            <span class="rounded-0 badge badge-<%= item.status ? 'warning' : 'success' %> ">
+                                <%= item.status ? 'In contract' : 'Free agent' %>
+                            </span>
+                        </td>
+                        <td><%= item.continent %> </td>
+                        <td class="text-right" style="width: 15%;">
+                            <a href="" class="btn btn-outline-info rounded-0 text-uppercase">edit</a>
+                            <a href="" class="btn btn-outline-danger rounded-0 text-uppercase">delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../../layouts/footer') %>
